@@ -798,10 +798,10 @@ export default function PrivacyPage() {
                   contact us using the following details:
                 </LegalParagraph>
                 <LegalParagraph>
-                  Jean P.D. Meijer
+                  Daniel Ng
                   <br />
-                  <LegalTextLink href="mailto:jean@analoginterface.io">
-                    jean@analoginterface.io
+                  <LegalTextLink href="mailto:danielninetyfour@hotmail.com">
+                    danielninetyfour@hotmail.com
                   </LegalTextLink>
                 </LegalParagraph>
               </section>
