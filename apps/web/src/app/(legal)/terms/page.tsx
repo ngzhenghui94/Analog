@@ -10,7 +10,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Terms of Service - Analog Interface",
+  title: "Terms of Service - Questfully",
 };
 
 export default function TermsPage() {
@@ -28,7 +28,7 @@ export default function TermsPage() {
                 <LegalTextLink href="https://analog.now">
                   https://analog.now
                 </LegalTextLink>{" "}
-                and any related services provided by Analog Interface.
+                and any related services provided by Questfully.
               </LegalParagraph>
 
               <LegalParagraph>
@@ -40,11 +40,11 @@ export default function TermsPage() {
                 with all applicable laws and regulations. If you do not agree
                 with these Terms of Service, you are prohibited from using or
                 accessing this website or using any other services provided by
-                Analog Interface.
+                Questfully.
               </LegalParagraph>
 
               <LegalParagraph>
-                We, Analog Interface, reserve the right to review and amend any
+                We, Questfully, reserve the right to review and amend any
                 of these Terms of Service at our sole discretion. Upon doing so,
                 we will update this page. Any changes to these Terms of Service
                 will take effect immediately from the date of publication.
@@ -77,7 +77,7 @@ export default function TermsPage() {
                   <li>
                     knowingly or negligently use this website or any of its
                     associated services in a way that abuses or disrupts our
-                    networks or any other service Analog Interface provides;
+                    networks or any other service Questfully provides;
                   </li>
                   <li>
                     use this website or its associated services to transmit or
@@ -108,7 +108,7 @@ export default function TermsPage() {
                 <LegalHeading2>Intellectual Property</LegalHeading2>
                 <LegalParagraph>
                   The intellectual property in the materials contained in this
-                  website are owned by or licensed to Analog Interface and are
+                  website are owned by or licensed to Questfully and are
                   protected by applicable copyright and trademark law. We grant
                   our users permission to download one copy of the materials for
                   personal, non-commercial transitory use.
@@ -117,7 +117,7 @@ export default function TermsPage() {
                   This constitutes the grant of a license, not a transfer of
                   title. This license shall automatically terminate if you
                   violate any of these restrictions or the Terms of Service, and
-                  may be terminated by Analog Interface at any time.
+                  may be terminated by Questfully at any time.
                 </LegalParagraph>
               </section>
 
@@ -125,8 +125,8 @@ export default function TermsPage() {
                 <LegalHeading2>Liability</LegalHeading2>
                 <LegalParagraph>
                   Our website and the materials on our website are provided on
-                  an 'as is' basis. To the extent permitted by law, Analog
-                  Interface makes no warranties, expressed or implied, and
+                  an 'as is' basis. To the extent permitted by law, Questfully
+                  makes no warranties, expressed or implied, and
                   hereby disclaims and negates all other warranties including,
                   without limitation, implied warranties or conditions of
                   merchantability, fitness for a particular purpose, or
@@ -134,11 +134,11 @@ export default function TermsPage() {
                   of rights.
                 </LegalParagraph>
                 <LegalParagraph>
-                  In no event shall Analog Interface or its suppliers be liable
+                  In no event shall Questfully or its suppliers be liable
                   for any consequential loss suffered or incurred by you or any
                   third party arising from the use or inability to use this
-                  website or the materials on this website, even if Analog
-                  Interface or an authorized representative has been notified,
+                  website or the materials on this website, even if Questfully
+                  or an authorized representative has been notified,
                   orally or in writing, of the possibility of such damage.
                 </LegalParagraph>
                 <LegalParagraph>
@@ -161,8 +161,8 @@ export default function TermsPage() {
                 <LegalHeading2>Accuracy of Materials</LegalHeading2>
                 <LegalParagraph>
                   The materials appearing on our website are not comprehensive
-                  and are for general information purposes only. Analog
-                  Interface does not warrant or make any representations
+                  and are for general information purposes only. Questfully
+                  does not warrant or make any representations
                   concerning the accuracy, likely results, or reliability of the
                   use of the materials on this website, or otherwise relating to
                   such materials or on any resources linked to this website.
@@ -172,10 +172,10 @@ export default function TermsPage() {
               <section>
                 <LegalHeading2>Links</LegalHeading2>
                 <LegalParagraph>
-                  Analog Interface has not reviewed all of the sites linked to
+                  Questfully has not reviewed all of the sites linked to
                   its website and is not responsible for the contents of any
                   such linked site. The inclusion of any link does not imply
-                  endorsement, approval or control by Analog Interface of the
+                  endorsement, approval or control by Questfully of the
                   site. Use of any such linked site is at your own risk and we
                   strongly advise you make your own investigations with respect
                   to the suitability of those sites.

@@ -9,7 +9,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { SignInForm } from "./sign-in-form";
 
 export const metadata: Metadata = {
-  title: "Sign In - Analog",
+  title: "Sign In - Questfully - Calendar",
 };
 
 export default async function Page({

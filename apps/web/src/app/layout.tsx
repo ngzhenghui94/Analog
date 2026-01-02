@@ -32,26 +32,26 @@ const satoshi = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Analog",
+  title: "Questfully - Calendar",
   description: "A calendar that understands your life.",
   openGraph: {
-    title: "Analog",
+    title: "Questfully - Calendar",
     description: "A calendar that understands your life.",
     url: URLS.SITE,
-    siteName: "Analog",
+    siteName: "Questfully - Calendar",
     images: [
       {
         url: ogImage.src,
         width: ogImage.width,
         height: ogImage.height,
-        alt: "Analog",
+        alt: "Questfully - Calendar",
       },
     ],
     locale: "en_US",
     type: "website",
   },
   twitter: {
-    title: "Analog",
+    title: "Questfully - Calendar",
     description: "A calendar that understands your life.",
     site: "@analogdotnow",
     card: "summary_large_image",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
         url: ogImage.src,
         width: ogImage.width,
         height: ogImage.height,
-        alt: "Analog",
+        alt: "Questfully - Calendar",
       },
     ],
   },

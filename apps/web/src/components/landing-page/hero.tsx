@@ -53,7 +53,7 @@ export function Hero() {
                 Reimagining the Calendar, <br /> to make the most of your time
               </h1>
               <p>
-                Analog is an open source calendar that redefines what it means
+                Questfully - Calendar is an open source calendar that redefines what it means
                 to use a calendar.
                 {/* Calendars have been the same for decades. */}
               </p>

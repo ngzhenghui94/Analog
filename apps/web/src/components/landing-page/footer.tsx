@@ -113,7 +113,7 @@ export function Footer() {
         <div className="mt-4 h-1 w-full rounded-full bg-neutral-500/5 md:mt-12" />
         <div className="flex flex-wrap items-end justify-between gap-6 py-6">
           <span className="order-last block text-center text-sm text-muted-foreground md:order-first">
-            © Analog Interface, All rights reserved
+            © Questfully, All rights reserved
           </span>
           <div className="order-first flex flex-wrap justify-center gap-6 text-sm md:order-last"></div>
         </div>

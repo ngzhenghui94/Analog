@@ -1,5 +1,6 @@
 {
   "name": "@repo/web",
+  "description": "Questfully - Calendar",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -95,6 +96,7 @@
     "json-diff-ts": "^4.8.2",
     "katex": "^0.16.27",
     "lucide-react": "^0.562.0",
+    "maplibre-gl": "^5.15.0",
     "match-sorter": "^8.2.0",
     "motion": "^12.23.26",
     "next": "16.1.1",

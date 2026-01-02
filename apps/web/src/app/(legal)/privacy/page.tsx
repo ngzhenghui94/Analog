@@ -11,7 +11,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy - Analog",
+  title: "Privacy Policy - Questfully",
 };
 
 export default function PrivacyPage() {
@@ -25,7 +25,7 @@ export default function PrivacyPage() {
           <Card className="border-2 border-muted/30 bg-background/80 shadow-none">
             <CardContent className="space-y-8 p-8 text-base leading-relaxed">
               <LegalParagraph>
-                Your privacy is important to us. It is Analog's policy to
+                Your privacy is important to us. It is Questfully's policy to
                 respect your privacy and comply with any applicable law and
                 regulation regarding any personal information we may collect
                 about you, including across our website,{" "}
@@ -136,7 +136,7 @@ export default function PrivacyPage() {
               <section>
                 <LegalHeading2>Google User Data</LegalHeading2>
                 <LegalParagraph>
-                  When you link your Google account to Analog, we only ask for
+                  When you link your Google account to Questfully, we only ask for
                   the data needed to make the features you choose work.
                 </LegalParagraph>
 
@@ -156,10 +156,10 @@ export default function PrivacyPage() {
                     To let you sign in with Google and link your Google Calendar
                     account
                   </li>
-                  <li>To display your calendars and events inside Analog</li>
+                  <li>To display your calendars and events inside Questfully</li>
                   <li>
                     To allow you to add and edit events in your calendars from
-                    Analog
+                    Questfully
                   </li>
                 </LegalList>
 
@@ -184,7 +184,7 @@ export default function PrivacyPage() {
                 <LegalParagraph>
                   We use certain Google API Services (including, but not limited
                   to, Google Sign-In) to give you the option of connecting your
-                  Google Account to Analog. When you choose to do so, we may
+                  Google Account to Questfully. When you choose to do so, we may
                   request access to your Google email address, basic profile,
                   and Google Calendar data (calendar list &amp; event details)
                   solely for the purposes listed below. We do not request or
@@ -551,7 +551,7 @@ export default function PrivacyPage() {
 
                 <LegalHeading3>Disconnect Google Account</LegalHeading3>
                 <LegalParagraph>
-                  You may revoke Analog’s access to your Google Account at any
+                  You may revoke Questfully’s access to your Google Account at any
                   time by visiting{" "}
                   <LegalTextLink href="https://myaccount.google.com/permissions">
                     https://myaccount.google.com/permissions
@@ -560,7 +560,7 @@ export default function PrivacyPage() {
                   <strong className="font-semibold text-primary">
                     Disconnect
                   </strong>{" "}
-                  in your account settings inside Analog. This will delete any
+                  in your account settings inside Questfully. This will delete any
                   tokens we hold and disable Google-powered features.
                 </LegalParagraph>
               </section>
@@ -633,7 +633,7 @@ export default function PrivacyPage() {
                   personal information for their own purposes (known as "data
                   controllers") and organizations that process personal
                   information on behalf of other organizations (known as "data
-                  processors"). We, Analog, located at the address provided in
+                  processors"). We, Questfully, located at the address provided in
                   our Contact Us section, are a Data Controller with respect to
                   the personal information you provide to us.
                 </LegalParagraph>
