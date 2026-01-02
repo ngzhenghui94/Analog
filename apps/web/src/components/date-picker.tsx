@@ -74,6 +74,7 @@ export function DatePicker() {
         month: "space-y-4 w-full",
         table: "w-full border-collapse space-y-1",
         head_row: "flex w-full justify-between",
+        head_cell: "text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]",
         row: "flex w-full mt-2 justify-between",
         cell: "relative p-0 text-center text-sm focus-within:relative focus-within:z-20",
         day: cn(
