@@ -29,23 +29,7 @@ const links = [
       },
     ],
   },
-  {
-    group: "Company",
-    items: [
-      // {
-      //   title: "About",
-      //   href: "#",
-      // },
-      // {
-      //   title: "Blog",
-      //   href: "/blog",
-      // },
-      // {
-      //   title: "Contact",
-      //   href: "#",
-      // },
-    ],
-  },
+
 ];
 
 export function Footer() {
