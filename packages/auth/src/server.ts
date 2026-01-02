@@ -88,18 +88,26 @@ export const auth = betterAuth({
       prompt: "consent",
       overrideUserInfoOnSignIn: true,
     },
-    microsoft: {
-      clientId: env.MICROSOFT_CLIENT_ID,
-      clientSecret: env.MICROSOFT_CLIENT_SECRET,
-      scope: MICROSOFT_OAUTH_SCOPES,
-      overrideUserInfoOnSignIn: true,
-    },
-    zoom: {
-      clientId: env.ZOOM_CLIENT_ID,
-      clientSecret: env.ZOOM_CLIENT_SECRET,
-      scope: ZOOM_OAUTH_SCOPES,
-      overrideUserInfoOnSignIn: true,
-    },
+    ...(env.MICROSOFT_CLIENT_ID && env.MICROSOFT_CLIENT_SECRET
+      ? {
+        microsoft: {
+          clientId: env.MICROSOFT_CLIENT_ID,
+          clientSecret: env.MICROSOFT_CLIENT_SECRET,
+          scope: MICROSOFT_OAUTH_SCOPES,
+          overrideUserInfoOnSignIn: true,
+        },
+      }
+      : {}),
+    ...(env.ZOOM_CLIENT_ID && env.ZOOM_CLIENT_SECRET
+      ? {
+        zoom: {
+          clientId: env.ZOOM_CLIENT_ID,
+          clientSecret: env.ZOOM_CLIENT_SECRET,
+          scope: ZOOM_OAUTH_SCOPES,
+          overrideUserInfoOnSignIn: true,
+        },
+      }
+      : {}),
   },
   plugins: [
     apiKey({

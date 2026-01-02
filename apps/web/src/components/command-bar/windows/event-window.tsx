@@ -52,7 +52,10 @@ export function EventWindow() {
       initial="default"
       animate={state}
     >
-      <div className="size-full inset-fade-shadow-light" data-state={state}>
+      <div
+        className="size-full bg-background/60 backdrop-blur-xl shadow-2xl ring-1 ring-white/10"
+        data-state={state}
+      >
         <React.Activity mode={state === "default" ? "visible" : "hidden"}>
           <div className="absolute inset-0 p-2">
             <div className="opacity-100 transition-opacity delay-100 duration-500 ease-in-out in-data-[state=expanded]:opacity-0">

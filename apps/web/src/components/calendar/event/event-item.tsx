@@ -43,7 +43,7 @@ function EventWrapper({
   return (
     <div
       className={cn(
-        "group hover:text-event-hover flex h-full overflow-hidden border border-event bg-event px-1 text-left font-medium text-event backdrop-blur-md transition outline-none select-none hover:border-event-hover hover:bg-event-hover focus-visible:ring-[3px] focus-visible:ring-ring/50 data-past-event:line-through",
+        "group hover:text-event-hover flex h-full overflow-hidden border border-event bg-event px-1 text-left font-medium text-event backdrop-blur-md transition-all outline-none select-none hover:scale-[1.02] hover:border-event-hover hover:bg-event-hover hover:shadow-lg focus-visible:ring-[3px] focus-visible:ring-ring/50 data-past-event:line-through",
         getBorderRadiusClasses(isFirstDay, isLastDay),
         getContentPaddingClasses(isFirstDay, isLastDay),
         className,
@@ -137,7 +137,7 @@ export function EventItem({
           "@container/event flex gap-x-1.5 py-1 ps-1 pe-2",
           "mt-(--calendar-color-gap) h-(--calendar-color-height) items-center text-[10px] sm:text-xs",
           isSelected &&
-            "bg-event-selected text-event-selected hover:bg-event-selected-hover",
+          "bg-event-selected text-event-selected hover:bg-event-selected-hover",
           className,
         )}
         data-selected={isSelected || undefined}
@@ -180,7 +180,7 @@ export function EventItem({
           // duration.total({ unit: "minute" }) < 45 && "pe-1",
           view === "week" ? "text-[10px] sm:text-xs" : "text-xs",
           isSelected &&
-            "bg-event-selected text-event-selected hover:bg-event-selected-hover",
+          "bg-event-selected text-event-selected hover:bg-event-selected-hover",
           className,
         )}
         data-selected={isSelected || undefined}
@@ -214,7 +214,7 @@ export function EventItem({
       className={cn(
         "group hover:text-event-hover @container/event flex w-full flex-col gap-1 rounded-md border border-event bg-event p-2 text-left text-event transition outline-none hover:border-event-hover hover:bg-event-hover focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 data-past-event:line-through data-past-event:opacity-90",
         isSelected &&
-          "bg-event-selected text-event-selected hover:bg-event-selected-hover",
+        "bg-event-selected text-event-selected hover:bg-event-selected-hover",
         className,
       )}
       style={
