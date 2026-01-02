@@ -34,39 +34,34 @@ const links = [
 
 export function Footer() {
   return (
-    <footer className="bg-white pt-20 dark:bg-transparent">
-      <div className="mx-auto max-w-5xl px-6">
-        <div className="grid gap-12 md:grid-cols-5">
-          <div className="space-y-6 md:col-span-3">
-            <Link href="/" aria-label="go home" className="block size-fit">
-              <Logo className="h-6" />
-            </Link>
-
-
-          </div>
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 md:col-span-2">
-            {links.map((link, index) => (
-              <div key={index} className="space-y-4 text-sm">
-                <span className="block font-medium">{link.group}</span>
-                {link.items.map((item, index) => (
-                  <Link
-                    key={index}
-                    href={item.href}
-                    className="block text-muted-foreground duration-150 hover:text-primary"
-                  >
-                    <span>{item.title}</span>
-                  </Link>
-                ))}
-              </div>
-            ))}
-          </div>
+    <footer className="w-full border-t border-white/10 bg-background/50 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-12 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-2">
+          <Link href="/" aria-label="go home" className="flex items-center gap-2">
+            <Logo className="h-6 w-6 text-foreground" />
+            <span className="text-lg font-medium tracking-tight text-foreground">
+              Questfully
+            </span>
+          </Link>
+          <p className="text-sm text-muted-foreground/80">
+            © {new Date().getFullYear()} Questfully. All rights reserved.
+          </p>
         </div>
-        <div className="mt-4 h-1 w-full rounded-full bg-neutral-500/5 md:mt-12" />
-        <div className="flex flex-wrap items-end justify-between gap-6 py-6">
-          <span className="order-last block text-center text-sm text-muted-foreground md:order-first">
-            © Questfully, All rights reserved
-          </span>
-          <div className="order-first flex flex-wrap justify-center gap-6 text-sm md:order-last"></div>
+
+        <div className="flex gap-8">
+          {links.map((group) => (
+            <div key={group.group} className="flex gap-6">
+              {group.items.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {item.title}
+                </Link>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
     </footer>
