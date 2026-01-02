@@ -59,31 +59,32 @@ export function Footer() {
             </Link>
 
 
-            <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 md:col-span-2">
-              {links.map((link, index) => (
-                <div key={index} className="space-y-4 text-sm">
-                  <span className="block font-medium">{link.group}</span>
-                  {link.items.map((item, index) => (
-                    <Link
-                      key={index}
-                      href={item.href}
-                      className="block text-muted-foreground duration-150 hover:text-primary"
-                    >
-                      <span>{item.title}</span>
-                    </Link>
-                  ))}
-                </div>
-              ))}
-            </div>
           </div>
-          <div className="mt-4 h-1 w-full rounded-full bg-neutral-500/5 md:mt-12" />
-          <div className="flex flex-wrap items-end justify-between gap-6 py-6">
-            <span className="order-last block text-center text-sm text-muted-foreground md:order-first">
-              © Questfully, All rights reserved
-            </span>
-            <div className="order-first flex flex-wrap justify-center gap-6 text-sm md:order-last"></div>
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 md:col-span-2">
+            {links.map((link, index) => (
+              <div key={index} className="space-y-4 text-sm">
+                <span className="block font-medium">{link.group}</span>
+                {link.items.map((item, index) => (
+                  <Link
+                    key={index}
+                    href={item.href}
+                    className="block text-muted-foreground duration-150 hover:text-primary"
+                  >
+                    <span>{item.title}</span>
+                  </Link>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
+        <div className="mt-4 h-1 w-full rounded-full bg-neutral-500/5 md:mt-12" />
+        <div className="flex flex-wrap items-end justify-between gap-6 py-6">
+          <span className="order-last block text-center text-sm text-muted-foreground md:order-first">
+            © Questfully, All rights reserved
+          </span>
+          <div className="order-first flex flex-wrap justify-center gap-6 text-sm md:order-last"></div>
+        </div>
+      </div>
     </footer >
   );
 }

@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 
 import { auth } from "@repo/auth/server";
 
+import { Features } from "@/components/landing-page/features";
 import { Hero } from "@/components/landing-page/hero";
 
 export default async function LandingPage() {
@@ -14,8 +15,9 @@ export default async function LandingPage() {
 
   return (
     <div className="min-h-[calc(100vh-8rem)] py-20 sm:py-28 md:py-32 lg:py-40">
-      <main className="flex w-full flex-col items-center justify-center gap-8 md:gap-12">
+      <main className="flex w-full flex-col items-center justify-center gap-16 md:gap-24">
         <Hero />
+        <Features />
       </main>
     </div>
   );
