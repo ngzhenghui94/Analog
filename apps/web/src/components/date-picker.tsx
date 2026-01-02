@@ -69,29 +69,23 @@ export function DatePicker() {
       onSelect={onSelect}
       month={displayedMonth}
       onMonthChange={setDisplayedMonth}
-      className={cn("w-fit px-0 **:[[role=gridcell]]:w-7")}
-      todayClassName={cn(
-        "[&>button]:!bg-sidebar-primary [&>button]:!text-sidebar-primary-foreground",
-        "[&>button:hover]:!bg-sidebar-primary [&>button:hover]:brightness-90",
-        "[&>button]:font-medium",
-      )}
-      selectedClassName={cn(
-        "[&>button]:text-sidebar-foreground [&>button]:bg-transparent",
-        "[&>button:hover]:text-sidebar-primary-foreground [&>button:hover]:bg-sidebar-primary/80",
-        "[&>button:focus]:bg-sidebar-primary [&>button:focus]:text-sidebar-primary-foreground",
-        isDayView &&
-          "dark:[&>button]:bg-sidebar-foreground/8 [&>button]:bg-sidebar-foreground/4",
-      )}
-      dayButtonClassName="hover:bg-sidebar-foreground/10 dark:hover:bg-sidebar-foreground/15"
-      weekClassName={cn(
-        "relative z-0 before:-z-10 before:absolute before:content-[''] before:inset-0 before:rounded-md",
-        "[&:has([aria-selected=true])]:before:bg-sidebar-foreground/4",
-        "dark:[&:has([aria-selected=true])]:before:bg-sidebar-foreground/8",
-        !isWeekView && "before:hidden",
-      )}
-      weekdayClassName="flex-1 text-sidebar-foreground/70 font-medium"
-      outsideClassName="aria-selected:opacity-100 aria-selected:bg-transparent"
-      navClassName="[&>button]:z-10"
+      className={cn("w-full px-0")}
+      classNames={{
+        month: "space-y-4 w-full",
+        table: "w-full border-collapse space-y-1",
+        head_row: "flex w-full justify-between",
+        row: "flex w-full mt-2 justify-between",
+        cell: "relative p-0 text-center text-sm focus-within:relative focus-within:z-20",
+        day: cn(
+          "h-8 w-8 p-0 font-normal aria-selected:opacity-100 hover:bg-white/5 rounded-md transition-colors",
+        ),
+        day_selected:
+          "bg-white/10 text-white hover:bg-white/15 focus:bg-white/15",
+        day_today: "bg-white/5 text-white font-semibold",
+        day_outside: "text-muted-foreground opacity-50",
+        day_disabled: "text-muted-foreground opacity-50",
+        day_hidden: "invisible",
+      }}
     />
   );
 }

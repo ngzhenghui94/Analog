@@ -17,17 +17,20 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const calendarSettings = useAtomValue(calendarSettingsAtom);
 
   return (
-    <Sidebar {...props}>
+    <Sidebar
+      className="border-r border-white/5 bg-background/20 backdrop-blur-xl"
+      {...props}
+    >
       <SidebarContent className="relative gap-0 overflow-hidden">
         <div className="hidden h-12 titlebar-draggable mac:block" />
-        <SidebarGroup className="pt-3.75">
-          <SidebarGroupContent className="items-center px-1.5">
+        <SidebarGroup className="pt-4 px-3">
+          <SidebarGroupContent className="flex flex-col items-center gap-4">
             <DatePicker />
             {calendarSettings.easterEggsEnabled && <SubwaySurfers />}
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter>
+      <SidebarFooter className="p-3">
         <NavUser />
       </SidebarFooter>
     </Sidebar>

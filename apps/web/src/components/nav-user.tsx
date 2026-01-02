@@ -75,16 +75,16 @@ export function NavUser() {
             <SidebarMenuButton
               id="nav-user-button"
               size="lg"
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+              className="hover:bg-white/5 data-[state=open]:bg-white/5 data-[state=open]:text-foreground transition-colors"
             >
               <UserAvatar user={user} />
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{user.name}</span>
-                <span className="truncate text-xs text-muted-foreground">
+                <span className="truncate font-medium text-foreground/90">{user.name}</span>
+                <span className="truncate text-xs text-muted-foreground/80">
                   {user.email}
                 </span>
               </div>
-              <ChevronUpDownIcon className="ml-auto size-4" />
+              <ChevronUpDownIcon className="ml-auto size-4 text-muted-foreground/50" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent

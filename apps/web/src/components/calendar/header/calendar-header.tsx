@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { CalendarNavigation } from "./calendar-navigation";
 import { CalendarViewMenu } from "./calendar-view-menu";
 import { CalendarViewTitle } from "./calendar-view-title";
+import { KeyboardShortcutsDialog } from "./keyboard-shortcuts-dialog";
 
 type CalendarHeaderProps = React.ComponentProps<"header">;
 
@@ -29,6 +30,7 @@ export function CalendarHeader({
       </div>
 
       <div className="flex items-center gap-2">
+        <KeyboardShortcutsDialog />
         <CalendarPicker />
         <CalendarNavigation />
         <CalendarViewMenu />
