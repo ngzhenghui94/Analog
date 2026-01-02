@@ -36,10 +36,10 @@ const links = [
       //   title: "About",
       //   href: "#",
       // },
-      {
-        title: "Blog",
-        href: "/blog",
-      },
+      // {
+      //   title: "Blog",
+      //   href: "/blog",
+      // },
       // {
       //   title: "Contact",
       //   href: "#",

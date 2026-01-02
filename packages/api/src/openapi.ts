@@ -7,10 +7,9 @@ import { appRouter } from "./root";
 export const openApiDocument = generateOpenApiDocument(appRouter, {
   title: "Analog API",
   version: "1.0.0",
-  baseUrl:
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:3000"
-      : `https://${env.NEXT_PUBLIC_VERCEL_URL}`,
+  baseUrl: env.NEXT_PUBLIC_VERCEL_URL
+    ? `https://${env.NEXT_PUBLIC_VERCEL_URL}`
+    : "http://localhost:3000",
   securitySchemes: {
     apiKey: {
       type: "apiKey",

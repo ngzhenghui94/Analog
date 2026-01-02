@@ -3,7 +3,9 @@ import "server-only";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 
+console.log("DB: Importing env...");
 import { env } from "@repo/env/server";
+console.log("DB: Imported env");
 
 import * as schema from "./schema";
 
