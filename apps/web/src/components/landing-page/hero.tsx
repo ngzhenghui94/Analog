@@ -31,34 +31,33 @@ export function Hero() {
             </p> */}
           </div>
         </div>
-    </div>
-      </AnimatedGroup >
+      </AnimatedGroup>
 
-    <AnimatedGroup
-      variants={delayedTransitionVariants}
-      className="overflow-hidden"
-    >
-      <div className="mx-auto w-full min-w-[300vw] px-4 sm:max-w-7xl sm:min-w-0 sm:translate-x-0 sm:px-6">
-        {/* <div className="w-full [--base-height:874px] [--display-height:calc(var(--base-height)_*_var(--preview-scale))] [--preview-scale:0.5] sm:[--preview-scale:0.8]">
+      <AnimatedGroup
+        variants={delayedTransitionVariants}
+        className="overflow-hidden"
+      >
+        <div className="mx-auto w-full min-w-[300vw] px-4 sm:max-w-7xl sm:min-w-0 sm:translate-x-0 sm:px-6">
+          {/* <div className="w-full [--base-height:874px] [--display-height:calc(var(--base-height)_*_var(--preview-scale))] [--preview-scale:0.5] sm:[--preview-scale:0.8]">
             <div className="[--item-width:1400px]">
               <CalendarWindow className="h-(--base-height) w-(--item-width) scale-(--preview-scale) origin-top-left" />
             </div>
           </div>
           <CalendarWindow className="w-full h-[50vh]" /> */}
-        <Image
-          src={PreviewDark}
-          alt="Hero"
-          className="hidden rounded-lg dark:block"
-          unoptimized
-        />
-        <Image
-          src={PreviewLight}
-          alt="Hero"
-          className="block rounded-lg dark:hidden"
-          unoptimized
-        />
-      </div>
-    </AnimatedGroup>
+          <Image
+            src={PreviewDark}
+            alt="Hero"
+            className="hidden rounded-lg dark:block"
+            unoptimized
+          />
+          <Image
+            src={PreviewLight}
+            alt="Hero"
+            className="block rounded-lg dark:hidden"
+            unoptimized
+          />
+        </div>
+      </AnimatedGroup>
     </div >
   );
 }

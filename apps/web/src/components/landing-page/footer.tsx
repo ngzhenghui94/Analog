@@ -85,6 +85,6 @@ export function Footer() {
           <div className="order-first flex flex-wrap justify-center gap-6 text-sm md:order-last"></div>
         </div>
       </div>
-    </footer >
+    </footer>
   );
 }

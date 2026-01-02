@@ -27,9 +27,12 @@ export function CalendarLayout() {
 
   return (
     <FlowsProvider>
-      <AppSidebar side="left" className="border-r select-none" />
+      <AppSidebar
+        side="left"
+        className="border-r-0 bg-background/60 backdrop-blur-xl select-none"
+      />
       <EventHotkeys />
-      <SidebarInset className="h-dvh overflow-hidden bg-background select-none mac:bg-background/80">
+      <SidebarInset className="h-dvh overflow-hidden bg-background/40 backdrop-blur-md select-none">
         <CalendarView className="grow" />
       </SidebarInset>
       <AppCommandMenu />

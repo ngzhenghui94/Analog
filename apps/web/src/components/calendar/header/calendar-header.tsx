@@ -17,7 +17,7 @@ export function CalendarHeader({
   return (
     <header
       className={cn(
-        "@container/header flex h-12 items-center justify-between gap-2 p-2 ps-4 select-none",
+        "@container/header flex h-12 items-center justify-between gap-2 bg-background/20 backdrop-blur-sm p-2 ps-4 select-none",
         className,
       )}
       ref={ref}
