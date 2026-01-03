@@ -79,6 +79,7 @@ export function EventForm({ className }: EventFormProps) {
               onBlur={field.handleBlur}
               onChange={field.handleChange}
               disabled={disabled}
+              autoFocus
             />
           </>
         )}
@@ -228,7 +229,7 @@ export function EventForm({ className }: EventFormProps) {
                     className={cn(
                       "col-span-4 col-start-1 flex flex-col gap-y-2",
                       field.state.value.length > 0 &&
-                        "col-span-3 col-start-2 ps-2 pt-1",
+                      "col-span-3 col-start-2 ps-2 pt-1",
                     )}
                   >
                     <AttendeeListInput

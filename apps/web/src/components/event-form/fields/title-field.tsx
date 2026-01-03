@@ -9,6 +9,7 @@ interface TitleFieldProps {
   onChange: (value: string) => void;
   onBlur: () => void;
   disabled: boolean;
+  autoFocus?: boolean;
 }
 
 export function TitleField({
@@ -18,6 +19,7 @@ export function TitleField({
   onChange,
   onBlur,
   disabled,
+  autoFocus,
 }: TitleFieldProps) {
   const onInputChange = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,6 +53,7 @@ export function TitleField({
       onKeyDown={onKeyDown}
       placeholder="Title"
       disabled={disabled}
+      autoFocus={autoFocus}
     />
   );
 }
