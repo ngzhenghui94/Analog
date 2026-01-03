@@ -3,13 +3,13 @@ import { Input as InputPrimitive } from "@base-ui-components/react/input";
 
 import { cn } from "@/lib/utils";
 
-function Input({
-  className,
-  type,
-  ...props
-}: React.ComponentProps<typeof InputPrimitive>) {
+const Input = React.forwardRef<
+  HTMLInputElement,
+  React.ComponentProps<typeof InputPrimitive>
+>(({ className, type, ...props }, ref) => {
   return (
     <InputPrimitive
+      ref={ref}
       type={type}
       data-slot="input"
       className={cn(
@@ -18,14 +18,15 @@ function Input({
         "focus:ring-0 focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0",
         "aria-invalid:border-destructive",
         type === "search" &&
-          "[&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none [&::-webkit-search-results-button]:appearance-none [&::-webkit-search-results-decoration]:appearance-none",
+        "[&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none [&::-webkit-search-results-button]:appearance-none [&::-webkit-search-results-decoration]:appearance-none",
         type === "file" &&
-          "p-0 pr-3 text-muted-foreground/70 italic file:me-3 file:h-full file:border-0 file:border-r file:border-solid file:border-input file:bg-transparent file:px-3 file:text-sm file:font-medium file:text-foreground file:not-italic",
+        "p-0 pr-3 text-muted-foreground/70 italic file:me-3 file:h-full file:border-0 file:border-r file:border-solid file:border-input file:bg-transparent file:px-3 file:text-sm file:font-medium file:text-foreground file:not-italic",
         className,
       )}
       {...props}
     />
   );
-}
+});
+Input.displayName = "Input";
 
 export { Input };

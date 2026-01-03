@@ -42,8 +42,20 @@ export function TitleField({
     [],
   );
 
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
+  React.useEffect(() => {
+    if (autoFocus) {
+      const timer = setTimeout(() => {
+        inputRef.current?.focus();
+      }, 0);
+      return () => clearTimeout(timer);
+    }
+  }, [autoFocus]);
+
   return (
     <Input
+      ref={inputRef}
       id={id}
       name={name}
       className="h-8 border-none bg-transparent px-2 text-base shadow-none dark:bg-transparent"
@@ -53,7 +65,6 @@ export function TitleField({
       onKeyDown={onKeyDown}
       placeholder="Title"
       disabled={disabled}
-      autoFocus={autoFocus}
     />
   );
 }
