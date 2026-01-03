@@ -13,6 +13,7 @@ import {
 import { useAtomValue, useSetAtom } from "jotai";
 
 import { activeLayoutAtom } from "@/atoms/active-layout";
+import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
@@ -360,6 +361,18 @@ export function EventForm({ className }: EventFormProps) {
             )}
           </form.Field>
         </FormRow>
+      </div>
+      <div className="flex justify-end px-2 pt-2 pb-1">
+        <Button
+          size="sm"
+          disabled={disabled}
+          onClick={(e) => {
+            e.preventDefault();
+            form.handleSubmit();
+          }}
+        >
+          Save
+        </Button>
       </div>
     </form>
   );
