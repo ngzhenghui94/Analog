@@ -1,7 +1,11 @@
 "use client";
 
 import * as React from "react";
+import { useQueryClient } from "@tanstack/react-query";
 import { useAtom, useAtomValue } from "jotai";
+
+import { useEventQueryParams } from "@/components/calendar/hooks/use-events";
+import { RouterOutputs } from "@/lib/trpc";
 
 import { calendarSettingsAtom } from "@/atoms/calendar-settings";
 import { selectedEventIdsAtom } from "@/atoms/selected-events";
@@ -31,6 +35,8 @@ function requiresConfirmation(values: FormValues) {
 }
 
 export function useEventForm() {
+  const queryClient = useQueryClient();
+  const { queryKey } = useEventQueryParams();
   const actorRef = EventFormStateContext.useActorRef();
   const settings = useAtomValue(calendarSettingsAtom);
   const selectedEventId = useAtomValue(selectedEventIdsAtom)[0] ?? null;
@@ -108,7 +114,13 @@ export function useEventForm() {
     }
 
     void (async () => {
-      const event = await getEventById(selectedEventId);
+      let event = queryClient
+        .getQueryData<RouterOutputs["events"]["list"]>(queryKey)
+        ?.events.find((e) => e.id === selectedEventId);
+
+      if (!event) {
+        event = await getEventById(selectedEventId);
+      }
 
       if (!event) {
         return;
