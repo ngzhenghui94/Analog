@@ -304,7 +304,7 @@ export function EventForm({ className }: EventFormProps) {
           </form.Field>
         </FormRow>
       </FormContainer>
-      <div className="flex gap-x-1 px-0">
+      <div className="flex items-center gap-x-1 px-0">
         <form.Field name="calendar">
           {(field) => (
             <>
@@ -361,10 +361,9 @@ export function EventForm({ className }: EventFormProps) {
             )}
           </form.Field>
         </FormRow>
-      </div>
-      <div className="flex justify-end px-2 pt-2 pb-1">
         <Button
           size="sm"
+          className="ml-auto mr-2"
           disabled={disabled}
           onClick={(e) => {
             e.preventDefault();
@@ -374,6 +373,6 @@ export function EventForm({ className }: EventFormProps) {
           Save
         </Button>
       </div>
-    </form>
+    </form >
   );
 }
