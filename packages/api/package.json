@@ -37,6 +37,8 @@
     "@repo/db": "workspace:*",
     "@repo/env": "workspace:*",
     "@repo/google-calendar": "workspace:*",
+    "@repo/google-maps-places": "workspace:*",
+    "@repo/google-maps-routes": "workspace:*",
     "@repo/google-people": "workspace:*",
     "@repo/google-tasks": "workspace:*",
     "@repo/providers": "workspace:*",

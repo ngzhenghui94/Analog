@@ -13,7 +13,7 @@ export default function CalendarLayout({
 }: Readonly<{ children: ReactNode }>) {
   return (
     <CalendarColorsProvider>
-      <SidebarProvider defaultWidthRight="21.5rem">
+      <SidebarProvider defaultWidth="21rem" defaultWidthRight="21.5rem">
         <AppHotkeyProvider>{children}</AppHotkeyProvider>
       </SidebarProvider>
     </CalendarColorsProvider>
