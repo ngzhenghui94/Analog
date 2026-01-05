@@ -16,14 +16,6 @@ export function AddAccountButton() {
     });
   }, []);
 
-  if (env.NEXT_PUBLIC_VERCEL_ENV === "production") {
-    return (
-      <Button variant="outline" onClick={linkAccount}>
-        Add Account
-      </Button>
-    );
-  }
-
   return (
     <AddAccountDialog>
       <Button variant="outline">Add Account</Button>

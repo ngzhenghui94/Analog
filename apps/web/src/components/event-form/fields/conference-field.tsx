@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { GoogleMeet } from "@/components/icons";
+import { GoogleMeet, Microsoft } from "@/components/icons";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -84,8 +84,17 @@ function ConferenceSelect({
             disabled={disabled}
           >
             <span className="line-clamp-1 flex w-full items-center gap-2">
-              <GoogleMeet />
+              <GoogleMeet className="size-4" />
               Google Meet
+            </span>
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onSelect={() => onValueChange("microsoft")}
+            disabled={disabled}
+          >
+            <span className="line-clamp-1 flex w-full items-center gap-2">
+              <Microsoft className="size-4" />
+              Microsoft Teams
             </span>
           </DropdownMenuItem>
         </DropdownMenuContent>

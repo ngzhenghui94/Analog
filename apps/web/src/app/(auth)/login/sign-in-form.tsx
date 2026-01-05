@@ -54,7 +54,7 @@ export function SignInForm({ redirectUrl = "/calendar" }: SignInFormProps) {
               "flex w-full flex-col items-center justify-between gap-4",
             )}
           >
-            {providers.slice(0, 1).map((provider) => {
+            {providers.map((provider) => {
               return (
                 <Button
                   key={provider.id}
