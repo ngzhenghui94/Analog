@@ -7,7 +7,6 @@ import {
   SettingsSectionHeader,
   SettingsSectionTitle,
 } from "../settings-page";
-import { EasterEggSelector } from "./general/easter-egg-section";
 import { StartOfWeekPicker } from "./general/start-or-week-picker";
 import { ThemePicker } from "./general/theme-picker";
 import { TimeFormatPicker } from "./general/time-format-picker";
@@ -56,9 +55,6 @@ export function General() {
           </SettingsSectionHeader>
           <DateFormatPicker />
         </div> */}
-
-        {/* When adding new settings, make sure this stays at the bottom of the section */}
-        <EasterEggSelector />
       </SettingsSection>
     </SettingsPage>
   );

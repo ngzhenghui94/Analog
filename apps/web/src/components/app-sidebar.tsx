@@ -3,7 +3,6 @@ import { useAtomValue } from "jotai";
 
 import { calendarSettingsAtom } from "@/atoms/calendar-settings";
 import { DatePicker } from "@/components/date-picker";
-import { SubwaySurfers } from "@/components/easter-eggs/subway-surfers";
 import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
@@ -26,7 +25,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarGroup className="pt-4 px-3">
           <SidebarGroupContent className="flex flex-col items-center gap-4">
             <DatePicker />
-            {calendarSettings.easterEggsEnabled && <SubwaySurfers />}
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>

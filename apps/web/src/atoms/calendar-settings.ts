@@ -8,7 +8,6 @@ export interface CalendarSettings {
   defaultTimeZone: string;
   defaultEventDuration: number;
   defaultStartTime: string;
-  easterEggsEnabled: boolean;
 }
 
 export const defaultTimeZone = Temporal.Now.timeZoneId();
@@ -22,6 +21,5 @@ export const calendarSettingsAtom = atomWithStorage<CalendarSettings>(
     defaultTimeZone,
     defaultEventDuration: 60,
     defaultStartTime: "09:00",
-    easterEggsEnabled: false,
   },
 );
