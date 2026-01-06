@@ -20,7 +20,21 @@ async function fetchFromMarble<T>(endpoint: string): Promise<T> {
       `Mocking Marble response for ${endpoint} due to dummy key during build`,
     );
     // @ts-ignore - mocking response
-    return { data: [], meta: { pagination: { total: 0 } } } as T;
+    return {
+      posts: [],
+      tags: [],
+      categories: [],
+      authors: [],
+      data: [],
+      pagination: {
+        totalItems: 0,
+        totalPages: 0,
+        currentPage: 1,
+        limit: 10,
+        nextPage: null,
+        previousPage: null,
+      },
+    } as unknown as T;
   }
 
   try {
