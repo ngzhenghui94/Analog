@@ -20,8 +20,6 @@ export const env = createEnv({
     UPSTASH_REDIS_REST_URL: z.string().url(),
     UPSTASH_REDIS_REST_TOKEN: z.string().min(1),
     COMPOSIO_API_KEY: z.string().optional(),
-    FIRECRAWL_API_KEY: z.string().min(1).optional(),
-    BROWSERBASE_API_KEY: z.string().min(1).optional(),
     MARBLE_API_URL: z.string().url().optional(),
     MARBLE_WORKSPACE_KEY: z.string().min(1).optional(),
   },

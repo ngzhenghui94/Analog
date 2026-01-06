@@ -5,11 +5,6 @@ import withSimpleAnalytics from "@simpleanalytics/next/plugin";
 import { URLS } from "./src/lib/urls";
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: [
-    "ajv",
-    "ajv-formats",
-    "@modelcontextprotocol/sdk",
-  ],
   reactCompiler: {
     compilationMode: "annotation",
   },
@@ -38,14 +33,6 @@ const nextConfig: NextConfig = {
     ];
 
     return [
-      {
-        source: "/api/mcp/:path*",
-        headers,
-      },
-      {
-        source: "/api/auth/mcp/:path*",
-        headers,
-      },
       {
         source: "/api/v1/:path*",
         headers,

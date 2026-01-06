@@ -3,7 +3,6 @@ import "server-only";
 import * as Sentry from "@sentry/node";
 import { TRPCError, initTRPC } from "@trpc/server";
 import { Ratelimit } from "@upstash/ratelimit";
-import type { McpMeta } from "trpc-to-mcp";
 import type { OpenApiMeta } from "trpc-to-openapi";
 import * as z from "zod";
 
@@ -24,7 +23,7 @@ import { superjson } from "./utils/superjson";
 type Unit = "ms" | "s" | "m" | "h" | "d";
 type Duration = `${number} ${Unit}` | `${number}${Unit}`;
 
-export interface Meta extends OpenApiMeta, McpMeta {
+export interface Meta extends OpenApiMeta {
   procedureName?: string;
   ratelimit?: {
     namespace: string;

@@ -14,10 +14,8 @@
     "zod": "^4.2.1"
   },
   "dependencies": {
-    "@browserbasehq/sdk": "^2.6.0",
     "@composio/core": "^0.2.6",
     "@composio/vercel": "^0.2.18",
-    "@mendable/firecrawl-js": "^4.10.0",
     "@repo/env": "workspace:*"
   },
   "devDependencies": {
