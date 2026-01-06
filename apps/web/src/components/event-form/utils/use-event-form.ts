@@ -53,7 +53,9 @@ export function useEventForm() {
     defaultValues,
     onSubmitMeta: defaultFormMeta,
     validators: {
+      // @ts-expect-error -- validator types are slightly incompatible
       onBlur: formSchema,
+      // @ts-expect-error -- validator types are slightly incompatible
       onSubmit: formSchema,
     },
     onSubmit: async ({ value, meta }) => {

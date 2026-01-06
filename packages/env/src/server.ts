@@ -22,6 +22,8 @@ export const env = createEnv({
     COMPOSIO_API_KEY: z.string().optional(),
     FIRECRAWL_API_KEY: z.string().min(1).optional(),
     BROWSERBASE_API_KEY: z.string().min(1).optional(),
+    MARBLE_API_URL: z.string().url().optional(),
+    MARBLE_WORKSPACE_KEY: z.string().min(1).optional(),
   },
   experimental__runtimeEnv: process.env,
   skipValidation: process.env.NODE_ENV !== "production",

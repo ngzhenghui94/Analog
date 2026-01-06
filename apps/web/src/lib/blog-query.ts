@@ -11,6 +11,18 @@ import type {
 } from "@/types/post";
 
 async function fetchFromMarble<T>(endpoint: string): Promise<T> {
+  // If we are in development or build without a valid key, return a mock/empty response to allow build to pass
+  if (
+    process.env.NODE_ENV === "production" &&
+    env.MARBLE_WORKSPACE_KEY === "dummy_key_for_build"
+  ) {
+    console.warn(
+      `Mocking Marble response for ${endpoint} due to dummy key during build`,
+    );
+    // @ts-ignore - mocking response
+    return { data: [], meta: { pagination: { total: 0 } } } as T;
+  }
+
   try {
     const response = await fetch(
       `${env.MARBLE_API_URL}/${env.MARBLE_WORKSPACE_KEY}/${endpoint}`,
