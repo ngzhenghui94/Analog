@@ -12,9 +12,14 @@ import {
   mergeAttributes,
   useEditor,
 } from "@tiptap/react";
+import { useAtomValue } from "jotai";
 import { AnimatePresence, motion } from "motion/react";
 import { toast } from "sonner";
+import { Temporal } from "temporal-polyfill";
 
+import { calendarSettingsAtom } from "@/atoms/calendar-settings";
+import { useCreateDraftAction } from "@/components/calendar/hooks/use-optimistic-mutations";
+import { createDraftEvent } from "@/lib/utils/calendar";
 import { cn } from "@/lib/utils";
 import { Window } from "../command-bar/window";
 import { createEventInputSuggestions } from "./create-event-input-suggestions";
@@ -26,53 +31,6 @@ interface Mention {
     label: string; // the value, might be a date, time, or duration
   };
 }
-
-// based on the title and mentions, create a description
-// like this:
-// "Sales meeting at 22:00 on May 1st 2025"
-// if shorter than a week we can use the day only, like "Sales meeting at 22:00 on Tuesday"
-
-function createEventDescription(title: string, mentions: Mention[]) {
-  const date = mentions.find((mention) => mention.attrs.id === "mention-date");
-  const time = mentions.find((mention) => mention.attrs.id === "mention-time");
-  // skip duration for now
-  const duration = mentions.find(
-    (mention) => mention.attrs.id === "mention-duration",
-  );
-
-  const prefix = date?.attrs.label === "tomorrow" ? "" : "on ";
-  const description = `${title} at ${time?.attrs.label} ${prefix}${date?.attrs.label}`;
-
-  if (description.length < 20) {
-    return `${title} at ${time?.attrs.label} ${prefix}${date?.attrs.label.split(" ")[0]}`;
-  }
-
-  return description;
-}
-
-function sum(editor: Editor) {
-  const json = editor?.getJSON();
-  const paragraph = json?.content?.find((node) => node.type === "paragraph");
-  const content = paragraph?.content?.map((node) => node.text).join("");
-  const sanitizedContent = content?.replace(/\s+$/, "");
-
-  const mentions = paragraph?.content?.filter(
-    (node) => node.type === "mention",
-  );
-
-  if (!sanitizedContent || !mentions) {
-    return null;
-  }
-
-  const description = createEventDescription(
-    sanitizedContent,
-    mentions as Mention[],
-  );
-
-  return description;
-}
-
-function useEventEditor() {}
 
 function handleKeyDown(view: EditorView, event: KeyboardEvent) {
   if (event.key !== "Enter" || event.shiftKey) {
@@ -102,6 +60,8 @@ export function CommandBarInput({
   placeholder,
 }: CommandBarInputProps) {
   const [isEmpty, setIsEmpty] = React.useState(true);
+  const calendarSettings = useAtomValue(calendarSettingsAtom);
+  const createDraftAction = useCreateDraftAction();
 
   const editor = useEditor({
     extensions: [
@@ -153,26 +113,57 @@ export function CommandBarInput({
     },
   });
 
-  const handleSubmit = React.useCallback(() => {
+  const handleSubmit = React.useCallback(async () => {
     if (!editor) {
       return;
     }
 
-    const description = sum(editor);
+    const content = editor.getText();
 
     // handle empty content
-    if (!description) {
-      toast.error("Please enter a title and a date, time, or duration");
+    if (!content || content.trim().length === 0) {
+      toast.error("Please enter event details");
       return;
     }
 
-    toast.success("Event created", {
-      description,
+    const promise = fetch("/api/ai/parse", {
+      method: "POST",
+      body: JSON.stringify({
+        text: content,
+        timeZone: calendarSettings.defaultTimeZone,
+      }),
+    }).then(async (res) => {
+      if (!res.ok) throw new Error(await res.text());
+      return res.json();
     });
 
-    editor?.commands.clearContent();
-    setIsEmpty(true);
-  }, [editor]);
+    toast.promise(promise, {
+      loading: "Creating event...",
+      success: (data) => {
+        const start = Temporal.Instant.from(data.start).toZonedDateTimeISO(
+          calendarSettings.defaultTimeZone,
+        );
+        const end = Temporal.Instant.from(data.end).toZonedDateTimeISO(
+          calendarSettings.defaultTimeZone,
+        );
+
+        const event = createDraftEvent({
+          title: data.title,
+          start,
+          end,
+          allDay: data.allDay,
+          description: data.description,
+          location: data.location,
+        });
+
+        createDraftAction(event);
+        editor?.commands.clearContent();
+        setIsEmpty(true);
+        return "Event created";
+      },
+      error: "Failed to create event",
+    });
+  }, [editor, calendarSettings, createDraftAction]);
 
   if (!editor) {
     return null;
