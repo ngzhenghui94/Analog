@@ -5,6 +5,11 @@ import withSimpleAnalytics from "@simpleanalytics/next/plugin";
 import { URLS } from "./src/lib/urls";
 
 const nextConfig: NextConfig = {
+  serverExternalPackages: [
+    "ajv",
+    "ajv-formats",
+    "@modelcontextprotocol/sdk",
+  ],
   reactCompiler: {
     compilationMode: "annotation",
   },
