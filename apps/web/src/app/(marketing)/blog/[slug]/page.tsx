@@ -13,10 +13,15 @@ import {
 export const revalidate = 300;
 
 export async function generateStaticParams() {
-  const { posts } = await getPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  try {
+    const { posts } = await getPosts();
+    return posts.map((post) => ({
+      slug: post.slug,
+    }));
+  } catch {
+    // Return empty array if posts can't be fetched - pages will be generated on-demand
+    return [];
+  }
 }
 
 interface PageProps {

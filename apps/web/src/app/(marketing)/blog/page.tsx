@@ -13,7 +13,13 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const { posts } = await getPosts();
+  let posts: Awaited<ReturnType<typeof getPosts>>["posts"] = [];
+  try {
+    const data = await getPosts();
+    posts = data.posts;
+  } catch {
+    // If posts can't be fetched, show empty state
+  }
 
   return (
     <div className="min-h-[calc(100vh-8rem)] py-20 sm:py-28 md:py-32 lg:py-40">
