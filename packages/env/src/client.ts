@@ -7,6 +7,10 @@ export const env = createEnv({
     NEXT_PUBLIC_ENV: z.enum(["development", "test", "production"]),
     NEXT_PUBLIC_VERCEL_ENV: z.enum(["development", "preview", "production"]),
     NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: z.string().optional(),
+    NEXT_PUBLIC_MICROSOFT_ENABLED: z
+      .string()
+      .transform((v) => v === "true")
+      .optional(),
   },
   runtimeEnv: {
     NEXT_PUBLIC_VERCEL_URL: process.env.NEXT_PUBLIC_VERCEL_URL,
@@ -14,6 +18,7 @@ export const env = createEnv({
     NEXT_PUBLIC_VERCEL_ENV: process.env.NEXT_PUBLIC_VERCEL_ENV,
     NEXT_PUBLIC_GOOGLE_MAPS_API_KEY:
       process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+    NEXT_PUBLIC_MICROSOFT_ENABLED: process.env.NEXT_PUBLIC_MICROSOFT_ENABLED,
   },
   skipValidation: process.env.NODE_ENV !== "production",
 });
