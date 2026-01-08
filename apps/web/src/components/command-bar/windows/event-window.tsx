@@ -1,9 +1,14 @@
 "use client";
 
 import * as React from "react";
+import { SparklesIcon } from "lucide-react";
 import { useAtomValue } from "jotai";
 
 import { windowStateAtom } from "@/atoms/window-state";
+import {
+  CommandBar,
+  CommandBarInput,
+} from "@/components/ai-input/command-bar";
 import { EventForm } from "@/components/event-form/event-form";
 import { cn } from "@/lib/utils";
 import { ContextView } from "../context-view";
@@ -57,10 +62,14 @@ export function EventWindow() {
         data-state={state}
       >
         <React.Activity mode={state === "default" ? "visible" : "hidden"}>
-          <div className="absolute inset-0 p-2">
-            <div className="opacity-100 transition-opacity delay-100 duration-500 ease-in-out in-data-[state=expanded]:opacity-0">
+          <div className="absolute inset-0 flex items-center gap-2 p-2">
+            <div className="shrink-0 opacity-100 transition-opacity delay-100 duration-500 ease-in-out in-data-[state=expanded]:opacity-0">
               <ContextView />
             </div>
+            <CommandBar className="flex-1">
+              <SparklesIcon className="size-4 shrink-0 text-muted-foreground/60" />
+              <CommandBarInput placeholder="Create event with AI..." />
+            </CommandBar>
           </div>
         </React.Activity>
         <React.Activity
