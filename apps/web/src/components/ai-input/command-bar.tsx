@@ -62,6 +62,7 @@ export function CommandBarInput({
   const [isEmpty, setIsEmpty] = React.useState(true);
   const calendarSettings = useAtomValue(calendarSettingsAtom);
   const createDraftAction = useCreateDraftAction();
+  const submitRef = React.useRef<() => void>();
 
   const editor = useEditor({
     extensions: [
@@ -101,7 +102,7 @@ export function CommandBarInput({
 
         // Otherwise handle the enter key
         event.preventDefault();
-        handleSubmit();
+        submitRef.current?.();
 
         return true;
       },
@@ -164,6 +165,11 @@ export function CommandBarInput({
       error: "Failed to create event",
     });
   }, [editor, calendarSettings, createDraftAction]);
+
+  // Keep the ref updated with the latest handleSubmit
+  React.useEffect(() => {
+    submitRef.current = handleSubmit;
+  }, [handleSubmit]);
 
   if (!editor) {
     return null;
