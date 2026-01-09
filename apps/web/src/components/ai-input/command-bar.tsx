@@ -38,7 +38,7 @@ function handleKeyDown(view: EditorView, event: KeyboardEvent) {
   }
 
   // @ts-expect-error this property exists as a custom extension
-  const isSuggestionActive = view.state.mention$.active;
+  const isSuggestionActive = view.state.mention$?.active;
 
   if (isSuggestionActive) {
     return false;
@@ -62,7 +62,7 @@ export function CommandBarInput({
   const [isEmpty, setIsEmpty] = React.useState(true);
   const calendarSettings = useAtomValue(calendarSettingsAtom);
   const createDraftAction = useCreateDraftAction();
-  const submitRef = React.useRef<() => void>();
+  const submitRef = React.useRef<() => void>(undefined);
 
   const editor = useEditor({
     extensions: [
@@ -94,7 +94,7 @@ export function CommandBarInput({
         }
 
         // @ts-expect-error this property exists as a custom extension
-        const isSuggestionActive = view.state.mention$.active;
+        const isSuggestionActive = view.state.mention$?.active;
 
         if (isSuggestionActive) {
           return false;
@@ -230,13 +230,14 @@ interface CommandBarProps {
 
 export function CommandBar({ children, className }: CommandBarProps) {
   return (
-    <Window
+    <div
       className={cn(
         className,
-        "relative flex h-9 min-h-9 flex-row rounded-2xl border border-border/20 bg-popover/80 px-3 backdrop-blur-lg",
+        "relative flex h-9 min-h-9 flex-row items-center gap-2 rounded-2xl border border-border/20 bg-popover/80 px-3 backdrop-blur-lg",
       )}
     >
       {children}
-    </Window>
+    </div>
   );
 }
+
