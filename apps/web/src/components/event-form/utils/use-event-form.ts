@@ -59,7 +59,8 @@ export function useEventForm() {
       onSubmit: formSchema,
     },
     onSubmit: async ({ value, meta }) => {
-      if (isPristine) {
+      // Allow saving if it's a draft, even if pristine
+      if (isPristine && value.type !== "draft") {
         return;
       }
 

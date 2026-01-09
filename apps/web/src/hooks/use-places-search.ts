@@ -6,7 +6,10 @@ import { env } from "@repo/env/client";
 
 import { useTRPC } from "@/lib/trpc/client";
 
-if (typeof window !== "undefined") {
+// Check if Google Maps API key is configured
+const hasGoogleMapsKey = Boolean(env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
+
+if (typeof window !== "undefined" && hasGoogleMapsKey) {
   setOptions({
     key: env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!,
   });
@@ -28,14 +31,15 @@ export function usePlacesSearch(
   const trpc = useTRPC();
   const { data: coordinates } = useQuery(
     trpc.user.approximateLocation.queryOptions(undefined, {
-      enabled: options?.enabled,
+      enabled: options?.enabled && hasGoogleMapsKey,
     }),
   );
 
   return useQuery({
     queryKey: [request.input],
     queryFn: async () => {
-      if (request.input.trim() === "") {
+      // Return empty if no API key or empty input
+      if (!hasGoogleMapsKey || request.input.trim() === "") {
         return {
           suggestions: [],
         };
@@ -52,18 +56,19 @@ export function usePlacesSearch(
         ...request,
         locationBias: coordinates
           ? {
-              center: {
-                lat: coordinates.latitude,
-                lng: coordinates.longitude,
-              },
-              radius: 20000,
-            }
+            center: {
+              lat: coordinates.latitude,
+              lng: coordinates.longitude,
+            },
+            radius: 20000,
+          }
           : "IP_BIAS",
         sessionToken: sessionTokenRef.current,
       });
     },
     placeholderData: keepPreviousData,
     staleTime: 1,
-    enabled: options?.enabled,
+    // Only enable if API key is present
+    enabled: options?.enabled && hasGoogleMapsKey,
   });
 }
