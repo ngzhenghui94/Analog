@@ -42,6 +42,7 @@ export function TimeIndicatorBackground() {
     <div
       className="pointer-events-none absolute right-0 left-0 select-none"
       style={{ top: `${indicator.position}px` }}
+      suppressHydrationWarning
     >
       <div className="relative flex items-center">
         <div className="absolute flex h-4 w-(--timeline-container-width) items-center justify-end">

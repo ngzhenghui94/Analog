@@ -22,11 +22,16 @@ interface LocationFieldDropdownProps {
   onDelete?: () => void;
 }
 
+import { LocationMapPreviewDialog } from "./location-map-preview-dialog";
+import * as React from "react";
+
 export function LocationFieldDropdown({
   location,
   disabled,
   onDelete,
 }: LocationFieldDropdownProps) {
+  const [showMapPreview, setShowMapPreview] = React.useState(false);
+
   const onCopyLocation = async () => {
     try {
       await navigator.clipboard.writeText(location);
@@ -64,11 +69,21 @@ export function LocationFieldDropdown({
           Copy Location
         </DropdownMenuItem>
         <DropdownMenuSeparator />
+        <DropdownMenuItem onSelect={() => setShowMapPreview(true)}>
+          <MapIcon className="size-4" />
+          Open in shadcn-maps
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
         <DropdownMenuItem variant="destructive" onSelect={onDelete}>
           <TrashIcon className="size-4" />
           Remove Location
         </DropdownMenuItem>
       </DropdownMenuContent>
+      <LocationMapPreviewDialog
+        location={location}
+        open={showMapPreview}
+        onOpenChange={setShowMapPreview}
+      />
     </DropdownMenu>
   );
 }

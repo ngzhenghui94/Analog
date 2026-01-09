@@ -61,6 +61,7 @@ export function useEventForm() {
     onSubmit: async ({ value, meta }) => {
       // Allow saving if it's a draft, even if pristine
       if (isPristine && value.type !== "draft") {
+        actorRef.send({ type: "CONFIRMED" });
         return;
       }
 
@@ -79,7 +80,8 @@ export function useEventForm() {
           return;
         }
 
-        await formApi.handleSubmit();
+        // Disable auto-submit on blur as it causes API spam loops when interacting with dialogs
+        // await formApi.handleSubmit();
       },
       onChange: async ({ formApi }) => {
         if (formApi.state.isPristine) {
