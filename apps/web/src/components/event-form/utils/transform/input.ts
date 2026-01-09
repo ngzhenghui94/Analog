@@ -14,7 +14,8 @@ function parseDateTime(
   { defaultTimeZone }: ParseDateTimeOptions,
 ): Temporal.ZonedDateTime {
   if (date instanceof Temporal.ZonedDateTime) {
-    return date;
+    // Convert to display timezone (same as calendar card does)
+    return date.withTimeZone(defaultTimeZone);
   }
 
   if (date instanceof Temporal.Instant) {
@@ -88,15 +89,9 @@ export function parseCalendarEvent({
   event,
   settings,
 }: ParseCalendarEventOptions): FormValues {
-  // If the event start is already a ZonedDateTime, use its timezone.
-  // Otherwise, fall back to user's default timezone setting.
-  const eventTimeZone =
-    event.start instanceof Temporal.ZonedDateTime
-      ? event.start.timeZoneId
-      : settings.defaultTimeZone;
-
-  const start = parseDateTime(event.start, { defaultTimeZone: eventTimeZone });
-  const end = parseDateTime(event.end, { defaultTimeZone: eventTimeZone });
+  // Always use user's display timezone (same as calendar card)
+  const start = parseDateTime(event.start, { defaultTimeZone: settings.defaultTimeZone });
+  const end = parseDateTime(event.end, { defaultTimeZone: settings.defaultTimeZone });
 
   return {
     id: event.id,
