@@ -12,6 +12,17 @@ const eventSchema = z.object({
   allDay: z.boolean().optional(),
 });
 
+/**
+ * Calculate next Friday from today for dynamic example dates
+ */
+function getNextFriday(timeZone: string): string {
+  const now = Temporal.Now.zonedDateTimeISO(timeZone);
+  const currentDayOfWeek = now.dayOfWeek; // 1 = Monday, 7 = Sunday
+  const daysUntilFriday = (5 - currentDayOfWeek + 7) % 7 || 7; // 5 = Friday
+  const nextFriday = now.add({ days: daysUntilFriday });
+  return nextFriday.toPlainDate().toString();
+}
+
 export async function POST(req: Request) {
   const { text, timeZone } = await req.json();
 
@@ -21,7 +32,10 @@ export async function POST(req: Request) {
     });
   }
 
-  const now = Temporal.Now.zonedDateTimeISO(timeZone).toString();
+  const nowZoned = Temporal.Now.zonedDateTimeISO(timeZone);
+  const now = nowZoned.toString();
+  const offset = nowZoned.offset;
+  const exampleFriday = getNextFriday(timeZone);
 
   try {
     let responseText: string;
@@ -39,7 +53,7 @@ export async function POST(req: Request) {
           messages: [
             {
               role: "system",
-              content: `You are a JSON calendar event generator. You ONLY output valid JSON, never any other text. Current time: ${now}`,
+              content: `You are a JSON calendar event generator. Output ONLY valid JSON with fields: title, start, end, description, location, allDay. Current time: ${now}. Use timezone offset ${offset} for all dates. If no duration specified, assume 1 hour.`,
             },
             {
               role: "user",
@@ -47,7 +61,7 @@ export async function POST(req: Request) {
             },
             {
               role: "assistant",
-              content: `{"title":"Lunch with Sarah","start":"2026-01-16T12:00:00+08:00","end":"2026-01-16T13:00:00+08:00","description":null,"location":null,"allDay":false}`,
+              content: `{"title":"Lunch with Sarah","start":"${exampleFriday}T12:00:00${offset}","end":"${exampleFriday}T13:00:00${offset}","description":null,"location":null,"allDay":false}`,
             },
             {
               role: "user",
@@ -80,7 +94,7 @@ export async function POST(req: Request) {
           messages: [
             {
               role: "system",
-              content: `You are a JSON calendar event generator. You ONLY output valid JSON. Current time: ${now}`,
+              content: `You are a JSON calendar event generator. Output ONLY valid JSON with fields: title (string), start (ISO datetime), end (ISO datetime), description (string or null), location (string or null), allDay (boolean). Current time: ${now}. Use timezone offset ${offset} for all dates. If no duration specified, assume 1 hour.`,
             },
             {
               role: "user",

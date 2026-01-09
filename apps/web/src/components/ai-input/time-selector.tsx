@@ -3,10 +3,10 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 interface SuggestionItem {
-  type: "time" | "duration";
+  type: "time" | "duration" | "date";
   label: string;
   value: string;
-  id: string;
+  id?: string;
 }
 
 export interface TimeSelectorProps {

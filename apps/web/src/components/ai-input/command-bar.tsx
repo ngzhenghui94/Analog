@@ -5,13 +5,7 @@ import Document from "@tiptap/extension-document";
 import Mention from "@tiptap/extension-mention";
 import Paragraph from "@tiptap/extension-paragraph";
 import Text from "@tiptap/extension-text";
-import { EditorView } from "@tiptap/pm/view";
-import {
-  Editor,
-  EditorContent,
-  mergeAttributes,
-  useEditor,
-} from "@tiptap/react";
+import { EditorContent, mergeAttributes, useEditor } from "@tiptap/react";
 import { useAtomValue } from "jotai";
 import { AnimatePresence, motion } from "motion/react";
 import { toast } from "sonner";
@@ -21,34 +15,7 @@ import { calendarSettingsAtom } from "@/atoms/calendar-settings";
 import { useCreateDraftAction } from "@/components/calendar/hooks/use-optimistic-mutations";
 import { createDraftEvent } from "@/lib/utils/calendar";
 import { cn } from "@/lib/utils";
-import { Window } from "../command-bar/window";
 import { createEventInputSuggestions } from "./create-event-input-suggestions";
-
-interface Mention {
-  type: "mention";
-  attrs: {
-    id: "mention-date" | "mention-time" | "mention-duration";
-    label: string; // the value, might be a date, time, or duration
-  };
-}
-
-function handleKeyDown(view: EditorView, event: KeyboardEvent) {
-  if (event.key !== "Enter" || event.shiftKey) {
-    return false;
-  }
-
-  // @ts-expect-error this property exists as a custom extension
-  const isSuggestionActive = view.state.mention$?.active;
-
-  if (isSuggestionActive) {
-    return false;
-  }
-
-  // Otherwise handle the enter key
-  event.preventDefault();
-
-  return true;
-}
 
 interface CommandBarInputProps {
   className?: string;
