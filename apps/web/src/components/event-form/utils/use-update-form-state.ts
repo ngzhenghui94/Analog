@@ -19,24 +19,7 @@ export function useUpdateFormState() {
         throw new Error("Default calendar not found");
       }
 
-      // DEBUG: Trace event data for timezone debugging
-      console.log("[useUpdateFormState] Input event:", {
-        id: event.id,
-        title: event.title,
-        start: event.start.toString(),
-        end: event.end.toString(),
-        startType: event.start.constructor.name,
-      });
-
       const values = parseFormValues(event, defaultCalendar, settings);
-
-      console.log("[useUpdateFormState] Parsed values:", {
-        id: values.id,
-        title: values.title,
-        start: values.start.toString(),
-        end: values.end.toString(),
-        startTz: values.start.timeZoneId,
-      });
 
       setFormState({
         event,

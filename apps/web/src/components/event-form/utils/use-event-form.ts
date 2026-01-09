@@ -107,7 +107,8 @@ export function useEventForm() {
   });
 
   React.useEffect(() => {
-    form.reset();
+    // Reset form with the NEW defaultValues from formState, not the initial ones
+    form.reset(formState.values);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formState]);
 
@@ -127,7 +128,9 @@ export function useEventForm() {
     const snapshot = actorRef.getSnapshot();
     const currentId = snapshot.context.formEvent?.id;
 
-    if (snapshot.matches("loading") && currentId === selectedEventId) {
+    // Skip if the state machine already has this event (either loading or queued)
+    // This prevents overwriting good data from useSelectAction with stale IndexedDB data
+    if (currentId === selectedEventId || snapshot.context.queuedEvent?.id === selectedEventId) {
       return;
     }
 

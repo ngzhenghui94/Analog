@@ -203,4 +203,20 @@ function TimeInputList({ suggestions, onSelect }: TimeInputListProps) {
   );
 }
 
-export const MemoizedTimeInput = React.memo(TimeInput);
+// Custom comparison for React.memo to properly detect Temporal.ZonedDateTime changes
+function areTimeInputPropsEqual(
+  prevProps: TimeInputProps,
+  nextProps: TimeInputProps
+): boolean {
+  return (
+    prevProps.value.toString() === nextProps.value.toString() &&
+    prevProps.id === nextProps.id &&
+    prevProps.className === nextProps.className &&
+    prevProps.disabled === nextProps.disabled &&
+    prevProps.open === nextProps.open &&
+    prevProps.onChange === nextProps.onChange &&
+    prevProps.onOpenChange === nextProps.onOpenChange
+  );
+}
+
+export const MemoizedTimeInput = React.memo(TimeInput, areTimeInputPropsEqual);

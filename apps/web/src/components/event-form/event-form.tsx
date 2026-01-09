@@ -88,7 +88,7 @@ export function EventForm({ className }: EventFormProps) {
       </form.Field>
       <FormContainer>
         <div className="flex">
-          <DateInputSection form={form} disabled={disabled} />
+          <DateInputSection key={form.state.values.start.toString()} form={form} disabled={disabled} />
           <div className="flex w-32 flex-col items-end gap-y-1">
             <div className="grid h-8 grid-cols-(--grid-event-form-half) items-center gap-x-1">
               <form.Field name="isAllDay">

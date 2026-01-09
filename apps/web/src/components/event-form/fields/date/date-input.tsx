@@ -277,7 +277,23 @@ export function DateInput({
   );
 }
 
-export const MemoizedDateInput = React.memo(DateInput);
+// Custom comparison for React.memo to properly detect Temporal.ZonedDateTime changes
+function areDateInputPropsEqual(
+  prevProps: DateInputProps,
+  nextProps: DateInputProps
+): boolean {
+  return (
+    prevProps.value.toString() === nextProps.value.toString() &&
+    prevProps.start?.toString() === nextProps.start?.toString() &&
+    prevProps.id === nextProps.id &&
+    prevProps.className === nextProps.className &&
+    prevProps.isAllDay === nextProps.isAllDay &&
+    prevProps.disabled === nextProps.disabled &&
+    prevProps.onChange === nextProps.onChange
+  );
+}
+
+export const MemoizedDateInput = React.memo(DateInput, areDateInputPropsEqual);
 
 interface TemporalCalendarProps {
   month: Temporal.PlainYearMonth;
