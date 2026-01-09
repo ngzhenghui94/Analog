@@ -88,9 +88,15 @@ export function parseCalendarEvent({
   event,
   settings,
 }: ParseCalendarEventOptions): FormValues {
-  const start = parseDateTime(event.start, settings);
+  // If the event start is already a ZonedDateTime, use its timezone.
+  // Otherwise, fall back to user's default timezone setting.
+  const eventTimeZone =
+    event.start instanceof Temporal.ZonedDateTime
+      ? event.start.timeZoneId
+      : settings.defaultTimeZone;
 
-  const end = parseDateTime(event.end, settings);
+  const start = parseDateTime(event.start, { defaultTimeZone: eventTimeZone });
+  const end = parseDateTime(event.end, { defaultTimeZone: eventTimeZone });
 
   return {
     id: event.id,
