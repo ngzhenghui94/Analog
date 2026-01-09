@@ -10,6 +10,7 @@ import {
   PencilSquareIcon,
   UsersIcon,
 } from "@heroicons/react/16/solid";
+import { LoaderCircleIcon } from "lucide-react";
 import { useAtomValue, useSetAtom } from "jotai";
 
 import { activeLayoutAtom } from "@/atoms/active-layout";
@@ -361,17 +362,30 @@ export function EventForm({ className }: EventFormProps) {
             )}
           </form.Field>
         </FormRow>
-        <Button
-          size="sm"
-          className="ml-auto mr-2"
-          disabled={disabled}
-          onClick={(e) => {
-            e.preventDefault();
-            form.handleSubmit();
-          }}
+        <form.Subscribe
+          selector={(state) => state.isSubmitting}
         >
-          Save
-        </Button>
+          {(isSubmitting) => (
+            <Button
+              size="sm"
+              className="ml-auto mr-2"
+              disabled={disabled || isSubmitting}
+              onClick={async (e) => {
+                e.preventDefault();
+                await form.handleSubmit();
+              }}
+            >
+              {isSubmitting ? (
+                <>
+                  <LoaderCircleIcon className="mr-1.5 h-4 w-4 animate-spin" />
+                  Saving...
+                </>
+              ) : (
+                "Save"
+              )}
+            </Button>
+          )}
+        </form.Subscribe>
       </div>
     </form >
   );

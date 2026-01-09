@@ -3,6 +3,7 @@
 import * as React from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useAtom, useAtomValue } from "jotai";
+import { toast } from "sonner";
 
 import { useEventQueryParams } from "@/components/calendar/hooks/use-events";
 import { RouterOutputs } from "@/lib/trpc";
@@ -62,13 +63,25 @@ export function useEventForm() {
       // Allow saving if it's a draft, even if pristine
       if (isPristine && value.type !== "draft") {
         actorRef.send({ type: "CONFIRMED" });
+        toast.success("Event saved", {
+          description: "Your event has been saved successfully.",
+        });
         return;
       }
 
-      await saveAction(value, meta?.sendUpdate, () => {
-        actorRef.send({ type: "CONFIRMED" });
-        setIsPristine(true);
-      });
+      try {
+        await saveAction(value, meta?.sendUpdate, () => {
+          actorRef.send({ type: "CONFIRMED" });
+          setIsPristine(true);
+          toast.success("Event saved", {
+            description: "Your event has been saved successfully.",
+          });
+        });
+      } catch (error) {
+        toast.error("Failed to save event", {
+          description: error instanceof Error ? error.message : "An unexpected error occurred.",
+        });
+      }
     },
     listeners: {
       onBlur: async ({ formApi }) => {
